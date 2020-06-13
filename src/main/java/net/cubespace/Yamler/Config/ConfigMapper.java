@@ -1,18 +1,19 @@
 package net.cubespace.Yamler.Config;
 
-import net.cubespace.Yamler.Config.Converter.Converter;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+
+import net.cubespace.Yamler.Config.Converter.Converter;
 
 /**
  * @author geNAZt (fabian.fassbender42@googlemail.com)
  */
 public class ConfigMapper extends BaseConfigMapper {
 	public Map<String, Object> saveToMap(Class clazz) throws Exception {
-		Map<String, Object> returnMap = new HashMap<>();
+		Map<String, Object> returnMap = new LinkedHashMap<>();
 
 		if (!clazz.getSuperclass().equals(YamlConfig.class) && !clazz.getSuperclass().equals(Object.class)) {
 			Map<String, Object> map = saveToMap(clazz.getSuperclass());
